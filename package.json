@@ -12,7 +12,7 @@
   "author": "Mantaseus",
   "license": "MIT",
   "scripts": {},
-  "main": "dist/react-native-peerjs.js",
+  "main": "index.js",
   "devDependencies": {
     "parcel": "^1.12.3"
   },
