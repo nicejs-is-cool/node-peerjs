@@ -1,3 +1,16 @@
+diff --git a/lib/dataconnection.ts b/lib/dataconnection.ts
+index aec3c05..f0ca925 100644
+--- a/lib/dataconnection.ts
++++ b/lib/dataconnection.ts
+@@ -58,7 +58,7 @@ export class DataConnection extends BaseConnection implements IDataConnection {
+       this.options.connectionId || DataConnection.ID_PREFIX + util.randomToken();
+ 
+     this.label = this.options.label || this.connectionId;
+-    this.serialization = this.options.serialization || SerializationType.Binary;
++    this.serialization = this.options.serialization || SerializationType.JSON;
+     this.reliable = !!this.options.reliable;
+ 
+     this._encodingQueue.on('done', (ab: ArrayBuffer) => {
 diff --git a/lib/exports.ts b/lib/exports.ts
 index 5772d02..63a57e3 100644
 --- a/lib/exports.ts

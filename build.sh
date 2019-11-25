@@ -16,7 +16,7 @@ git diff -- . ':(exclude)dist/*' > ../patch.diff
 cd ../
 
 # Append some of our modifications onto the built peerjs code
-cat header_patch.js dist/peerjs.min.js footer_patch.js > dist/react-native-peerjs.js
+cat header_patch.js dist/peerjs.min.js footer_patch.js > dist/node-peerjs.js
 rm dist/peerjs.min.js
 
-echo "Done. dist/react-native-peerjs.js"
+echo "Done. dist/node-peerjs.js"
