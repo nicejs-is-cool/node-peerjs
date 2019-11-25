@@ -1,29 +1,17 @@
-diff --git a/lib/dataconnection.ts b/lib/dataconnection.ts
-index ab58d6c..dfbf3b2 100644
---- a/lib/dataconnection.ts
-+++ b/lib/dataconnection.ts
-@@ -56,7 +56,7 @@ export class DataConnection extends BaseConnection {
-       this.options.connectionId || DataConnection.ID_PREFIX + util.randomToken();
- 
-     this.label = this.options.label || this.connectionId;
--    this.serialization = this.options.serialization || SerializationType.Binary;
-+    this.serialization = this.options.serialization || SerializationType.JSON;
-     this.reliable = !!this.options.reliable;
- 
-     if (this.options._payload) {
 diff --git a/lib/exports.ts b/lib/exports.ts
-index 5772d02..07fc457 100644
+index 5772d02..63a57e3 100644
 --- a/lib/exports.ts
 +++ b/lib/exports.ts
-@@ -8,6 +8,3 @@ export const peerjs = {
+@@ -7,7 +7,3 @@ export const peerjs = {
+ };
  
  export default Peer;
- 
+-
 -(<any>window).peerjs = peerjs;
 -/** @deprecated Should use peerjs namespace */
 -(<any>window).Peer = Peer;
 diff --git a/lib/peer.ts b/lib/peer.ts
-index 66a3412..78ac6cf 100644
+index 8f11659..9dcd105 100644
 --- a/lib/peer.ts
 +++ b/lib/peer.ts
 @@ -111,11 +111,6 @@ export class Peer extends EventEmitter {
@@ -39,15 +27,18 @@ index 66a3412..78ac6cf 100644
      if (this._options.path) {
        if (this._options.path[0] !== "/") {
 diff --git a/lib/supports.ts b/lib/supports.ts
-index 1801188..8bb163e 100644
+index 1801188..2783c43 100644
 --- a/lib/supports.ts
 +++ b/lib/supports.ts
-@@ -1,5 +1,3 @@
+@@ -1,7 +1,5 @@
 -import { webRTCAdapter } from './adapter';
 -
  export const Supports = new class {
-   readonly isIOS = ['iPad', 'iPhone', 'iPod'].includes(navigator.platform);
+-  readonly isIOS = ['iPad', 'iPhone', 'iPod'].includes(navigator.platform);
++  readonly isIOS = false;
    readonly supportedBrowsers = ['firefox', 'chrome', 'safari'];
+ 
+   readonly minFirefoxVersion = 59;
 @@ -28,36 +26,15 @@ export const Supports = new class {
    }
  
@@ -88,3 +79,23 @@ index 1801188..8bb163e 100644
    }
  
    toString(): string {
+@@ -69,4 +46,4 @@ export const Supports = new class {
+     isBrowserSupported:${this.isBrowserSupported()} 
+     isUnifiedPlanSupported:${this.isUnifiedPlanSupported()}`;
+   }
+-}
+\ No newline at end of file
++}
+diff --git a/package.json b/package.json
+index bb851bd..d304972 100644
+--- a/package.json
++++ b/package.json
+@@ -31,7 +31,7 @@
+     "parcel-bundler": "^1.12.3",
+     "standard": "^14.1.0",
+     "ts-node": "^8.3.0",
+-    "typescript": "^3.6.2"
++    "typescript": "^3.7.2"
+   },
+   "dependencies": {
+     "@types/node": "^10.14.17",

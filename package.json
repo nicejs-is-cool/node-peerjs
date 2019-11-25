@@ -1,22 +1,25 @@
 {
-  "name": "react-native-peerjs",
-  "version": "1.0.2",
-  "description": "react-native-webrtc + peerjs",
+  "name": "node-peerjs",
+  "version": "1.0.0",
+  "description": "nodejs wrtc + peerjs",
   "keywords": [
     "webrtc",
-    "react native",
+    "wrtc",
+    "nodejs",
     "peerjs"
   ],
-  "repository": "https://github.com/Zemke/react-native-peerjs",
-  "author": "Zemke <florian@zemke.io>",
+  "repository": "https://github.com/Mantaseus/node-peerjs",
+  "author": "Mantaseus",
   "license": "MIT",
-  "scripts": {
-    "build": "./build.sh",
-    "prepare": "./build.sh"
-  },
+  "scripts": {},
   "main": "dist/react-native-peerjs.js",
   "devDependencies": {
-    "parcel": "^1.12.3",
-    "peerjs": "1.1.0"
+    "parcel": "^1.12.3"
+  },
+  "dependencies": {
+    "filereader": "^0.10.3",
+    "node-fetch": "^2.6.0",
+    "wrtc": "^0.4.2",
+    "ws": "^7.2.0"
   }
 }
