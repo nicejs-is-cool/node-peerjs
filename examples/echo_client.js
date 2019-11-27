@@ -29,6 +29,7 @@ peer.on('open', async (localId) => {
 
     while (true) {
         const data = await askForInput('>');
+        console.log('Sending', data);
         conn.send(data);
     }
 })

@@ -1,16 +1,77 @@
-diff --git a/lib/dataconnection.ts b/lib/dataconnection.ts
-index aec3c05..f0ca925 100644
---- a/lib/dataconnection.ts
-+++ b/lib/dataconnection.ts
-@@ -58,7 +58,7 @@ export class DataConnection extends BaseConnection implements IDataConnection {
-       this.options.connectionId || DataConnection.ID_PREFIX + util.randomToken();
+diff --git a/lib/encodingQueue.ts b/lib/encodingQueue.ts
+index f0b3e40..7595bcd 100644
+--- a/lib/encodingQueue.ts
++++ b/lib/encodingQueue.ts
+@@ -2,30 +2,11 @@ import { EventEmitter } from "eventemitter3";
+ import logger from "./logger";
  
-     this.label = this.options.label || this.connectionId;
--    this.serialization = this.options.serialization || SerializationType.Binary;
-+    this.serialization = this.options.serialization || SerializationType.JSON;
-     this.reliable = !!this.options.reliable;
+ export class EncodingQueue extends EventEmitter {
+-  readonly fileReader: FileReader = new FileReader();
+-
+   private _queue: Blob[] = [];
+   private _processing: boolean = false;
  
-     this._encodingQueue.on('done', (ab: ArrayBuffer) => {
+   constructor() {
+     super();
+-
+-    this.fileReader.onload = (evt) => {
+-      this._processing = false;
+-
+-      if (evt.target) {
+-        this.emit('done', evt.target.result as ArrayBuffer);
+-      }
+-
+-      this.doNextTask();
+-    };
+-
+-    this.fileReader.onerror = (evt) => {
+-      logger.error(`EncodingQueue error:`, evt);
+-      this._processing = false;
+-      this.destroy();
+-      this.emit('error', evt);
+-    }
+   }
+ 
+   get queue(): Blob[] {
+@@ -41,6 +22,8 @@ export class EncodingQueue extends EventEmitter {
+   }
+ 
+   enque(blob: Blob): void {
++    // Need to define a `name` for the blob to make our `filereader` module process the blob
++    blob.name = 'mylovelylilblob';
+     this.queue.push(blob);
+ 
+     if (this.processing) return;
+@@ -49,7 +32,6 @@ export class EncodingQueue extends EventEmitter {
+   }
+ 
+   destroy(): void {
+-    this.fileReader.abort();
+     this._queue = [];
+   }
+ 
+@@ -59,6 +41,18 @@ export class EncodingQueue extends EventEmitter {
+ 
+     this._processing = true;
+ 
+-    this.fileReader.readAsArrayBuffer(this.queue.shift());
++    const currentBlob = this.queue.shift();
++    currentBlob.arrayBuffer().then((res) => {
++      this._processing = false;
++      if (res.target) {
++        this.emit('done', res.target.result as ArrayBuffer);
++      }
++      this.doNextTask();
++    }).catch((err) => {
++      logger.error(`EncodingQueue error:`, err);
++      this._processing = false;
++      this.destroy();
++      this.emit('error', err);
++    }
+   }
+-}
+\ No newline at end of file
++}
 diff --git a/lib/exports.ts b/lib/exports.ts
 index 5772d02..63a57e3 100644
 --- a/lib/exports.ts

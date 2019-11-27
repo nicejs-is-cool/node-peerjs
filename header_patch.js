@@ -7,3 +7,8 @@ fetch = require('node-fetch');
 WebSocket = require('ws');
 FileReader = require('filereader');
 
+Blob = require('node-blob');
+const blobToArraybuffer = require('blob-to-arraybuffer');
+Blob.prototype.arrayBuffer = function() {
+    return blobToArraybuffer(this);
+}
