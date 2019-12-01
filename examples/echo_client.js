@@ -1,4 +1,4 @@
-const Peer = require('../index.js');
+const Peer = require('../index.js').Peer;
 
 // FUNCTIONS --------------------------------------------------------------------------------------
 
@@ -22,15 +22,19 @@ const peer = new Peer({debug: 2});
 peer.on('open', async (localId) => {
     console.log(localId);
 
+    // Connect to the server peer whose ID we already know
     const conn = peer.connect('abcdefghijklmnopqrstuvwxyz');
-    conn.on('data', (data) => {
-        console.log(data);
-    });
 
-    while (true) {
-        const data = await askForInput('>');
-        console.log('Sending', data);
-        conn.send(data);
-    }
+    conn.on('open', async () => {
+        conn.on('data', async (data) => {
+            console.log(data);
+
+            const newUserInput = await askForInput('>');
+            conn.send(newUserInput);
+        });
+
+        const userInput = await askForInput('>');
+        conn.send(userInput);
+    });
 })
 
