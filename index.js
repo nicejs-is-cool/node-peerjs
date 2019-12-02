@@ -1,1 +1,1 @@
-module.exports = require('./dist/node-peerjs.js').peerjs;
+module.exports = require('./dist/peerjs-on-node.js').peerjs;

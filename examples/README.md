@@ -1,6 +1,6 @@
-# node-peerjs examples
+# Examples
 
-- The example scripts in this directory implements a simple echo server over a P2P webRTC connection using `node-peerjs`
+- The example scripts in this directory implements a simple echo server over a P2P webRTC connection using `peerjs-on-node`
 - Run the server
     
     ```

@@ -16,7 +16,7 @@ git diff -- . ':(exclude)dist/*' > ../patch/base_code_changes.diff
 cd ../
 
 # Append some of our modifications onto the built peerjs code
-cat patch/header_patch.js dist/peerjs.min.js patch/footer_patch.js > dist/node-peerjs.js
+cat patch/header_patch.js dist/peerjs.min.js patch/footer_patch.js > dist/peerjs-on-node.js
 rm dist/peerjs.min.js
 
-echo "Done. dist/node-peerjs.js"
+echo "Done. dist/peerjs-on-node.js"

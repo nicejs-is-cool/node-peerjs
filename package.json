@@ -1,14 +1,15 @@
 {
-  "name": "node-peerjs",
-  "version": "1.0.0",
+  "name": "peerjs-on-node",
+  "version": "1.0.1",
   "description": "nodejs wrtc + peerjs",
   "keywords": [
     "webrtc",
     "wrtc",
     "nodejs",
-    "peerjs"
+    "peerjs",
+    "p2p"
   ],
-  "repository": "https://github.com/Mantaseus/node-peerjs",
+  "repository": "https://github.com/Mantaseus/peerjs-on-node",
   "author": "Mantaseus",
   "license": "MIT",
   "scripts": {},
