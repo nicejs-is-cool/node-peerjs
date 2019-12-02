@@ -1,57 +1,22 @@
-# React Native PeerJS
+# Node PeerJS
 
-[react-native-webrtc](https://github.com/react-native-webrtc/react-native-webrtc) has brought WebRTC to React Native. [PeerJS](https://github.com/peers/peerjs) is a simple API to work with WebRTC in the Browser.
-
-I made it so that PeerJS works with react-native-webrtc in a React Native application.
+A port of the [PeerJS library](https://github.com/peers/peerjs) which currently only works on browsers. It uses the `wrtc` node module to provide webrtc functionality and fixes various compatibility issues with NodeJS.
 
 ## Install
 
-Install react-native-webrtc according to their install guide. Then add react-native-peerjs:
-
 ```
-yarn add react-native-peerjs
+npm i --save node-peerjs
 ```
 
 ## Usage
 
-Just refer to the PeerJS documentation. Here is an example:
+Just refer to the PeerJS documentation for a more detailed description of how the module works. You can also take a look at the `examples/` directory in this repo to see a small example using `node-peerjs`
 
-```js
-import Peer from 'react-native-peerjs';
+## Build history
 
-const localPeer = new Peer();
-localPeer.on('error', console.log);
+#### v1.0.0
 
-localPeer.on('open', localPeerId => {
-  console.log('Local peer open with ID', localPeerId);
-
-  const remotePeer = new Peer();
-  remotePeer.on('error', console.log);
-  remotePeer.on('open', remotePeerId => {
-    console.log('Remote peer open with ID', remotePeerId);
-
-    const conn = remotePeer.connect(localPeerId);
-    conn.on('error', console.log);
-    conn.on('open', () => {
-      console.log('Remote peer has opened connection.');
-      console.log('conn', conn);
-      conn.on('data', data => console.log('Received from local peer', data));
-      console.log('Remote peer sending data.');
-      conn.send('Hello, this is the REMOTE peer!');
-    });
-  });
-});
-
-localPeer.on('connection', conn => {
-  console.log('Local peer has received connection.');
-  conn.on('error', console.log);
-  conn.on('open', () => {
-    console.log('Local peer has opened connection.');
-    console.log('conn', conn);
-    conn.on('data', data => console.log('Received from remote peer', data));
-    console.log('Local peer sending data.');
-    conn.send('Hello, this is the LOCAL peer!');
-  });
-});
-```
-
+- Based on commit [0645dc3ddd51cbc1649ed13af56d9b66958fd62b](https://github.com/peers/peerjs/commit/0645dc3ddd51cbc1649ed13af56d9b66958fd62b) of PeerJS
+- First release version that tries to make most of the peerJS functionality work on NodeJS
+- See file `patch.diff` for all the modification made to the base PeerJS code and get it running on NodeJS
+- PeerJS code not included in this repo
