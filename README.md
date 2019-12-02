@@ -1,6 +1,6 @@
 # Node PeerJS
 
-[![Version](https://img.shields.io/npm/v/node-peerjs.svg)](https://www.npmjs.org/package/peerjs-on-nodejs)
+[![npm version](https://badge.fury.io/js/peerjs-on-node.svg)](https://badge.fury.io/js/peerjs-on-node)
 
 A port of the [PeerJS library](https://github.com/peers/peerjs) which currently only works on browsers. It uses the `wrtc` node module to provide webrtc functionality and fixes various compatibility issues with NodeJS.
 
