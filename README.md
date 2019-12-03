@@ -27,3 +27,11 @@ Just refer to the PeerJS documentation for a more detailed description of how th
 - First release version that tries to make most of the peerJS functionality work on NodeJS
 - See file `patch/patch.diff` for all the modification made to the base PeerJS code and get it running on NodeJS
 - PeerJS code not included in this repo
+
+#### v1.0.1
+
+- Updated some documentation
+
+#### v1.0.2
+
+- Updated a bit more of the documentation
