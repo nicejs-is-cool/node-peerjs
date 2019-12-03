@@ -1,6 +1,6 @@
 {
   "name": "peerjs-on-node",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "nodejs wrtc + peerjs",
   "keywords": [
     "webrtc",
