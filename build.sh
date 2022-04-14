@@ -3,7 +3,10 @@
 exec 2>&1
 
 # If the repo is not there then we have nothing to build. Exit
-[ ! -d "./peerjs" ] && echo "PeerJS source code not found at ./peerjs. Clone it from https://github.com/peers/peerjs.git" && exit
+#[ ! -d "./peerjs" ] && echo "PeerJS source code not found at ./peerjs. Clone it from https://github.com/peers/peerjs.git" && exit
+
+# If the repo is not there clone it so we can build it.
+[ ! -d "./peerjs" ] && git clone https://github.com/peers/peerjs.git peerjs
 
 rm -rf dist/
 cd peerjs
