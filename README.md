@@ -7,7 +7,7 @@ A port of the [PeerJS library](https://github.com/peers/peerjs) which currently 
 ## Install
 
 ```
-npm i --save peerjs-on-node
+npm i --save node-peerjs-client
 ```
 
 ## Usage
