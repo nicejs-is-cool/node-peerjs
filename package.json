@@ -14,7 +14,8 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "npm run build",
-    "build": "node build.js"
+    "build": "node build.js",
+    "prepublishOnly": "npm run build"
   },
   "main": "index.js",
   "devDependencies": {
