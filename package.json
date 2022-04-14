@@ -12,7 +12,10 @@
   "repository": "https://github.com/Mantaseus/peerjs-on-node",
   "author": "Mantaseus",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "postinstall": "npm run build",
+    "build": "node build.js"
+  },
   "main": "index.js",
   "devDependencies": {
     "parcel": "^1.12.3"
