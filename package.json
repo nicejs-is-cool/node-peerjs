@@ -1,7 +1,7 @@
 {
-  "name": "peerjs-on-node",
-  "version": "1.0.2",
-  "description": "nodejs wrtc + peerjs",
+  "name": "node-peerjs-client",
+  "version": "1.0.0",
+  "description": "node.js wrtc + peerjs",
   "keywords": [
     "webrtc",
     "wrtc",
@@ -9,8 +9,8 @@
     "peerjs",
     "p2p"
   ],
-  "repository": "https://github.com/Mantaseus/peerjs-on-node",
-  "author": "Mantaseus",
+  "repository": "https://github.com/nicejs-is-cool/node-peerjs",
+  "author": "nicejs-is-cool",
   "license": "MIT",
   "scripts": {
     "postinstall": "npm run build",
