@@ -21,7 +21,7 @@
     "blob-to-arraybuffer": "0.0.1",
     "filereader": "^0.10.3",
     "node-blob": "0.0.2",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "wrtc": "^0.4.7",
     "ws": "^8.5.0"
   }
